@@ -3,9 +3,9 @@
 import styled, { ThemeProvider } from "styled-components";
 import { useState, useEffect } from "react";
 import { darkTheme, lightTheme } from "./tokens/themes";
-import HeaderVariant from "./components/Header";
-import FooterVariant from "./components/Footer";
-import SidebarVariant from "./components/Sidebar";
+import HeaderVariant from "./components/header";
+import FooterVariant from "./components/footer";
+import SidebarVariant from "./components/sidebar";
 import HomePage from "./sections/homepage";
 import ButtonSection from "./sections/buttonSection";
 import CardSection from "./sections/cardSection";
