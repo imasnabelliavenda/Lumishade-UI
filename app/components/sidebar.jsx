@@ -17,7 +17,7 @@ const SidebarContainer = styled.aside`
   background: ${({ $theme }) => sidebarTheme[$theme].background};
   color: ${({ $theme }) => sidebarTheme[$theme].text};
   padding: ${spacing.lg};
-  width: 150px;
+  width: 200px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -91,22 +91,31 @@ const SidebarContainer = styled.aside`
     background: transparent;
     color: ${({ $theme }) => sidebarTheme[$theme].text};
     border: none;
-    padding: 8px 10px;
+    padding: 10px 12px;
     border-radius: ${borderRadius.sm};
     text-align: left;
     cursor: pointer;
     transition: ${effects.transitionBase};
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: ${spacing.sm};
+    font-size: ${typography.fontSize.sm};
+    width: 100%;
 
     &:hover {
       background: ${({ $theme }) => sidebarTheme[$theme].hover};
+      transform: translateX(5px);
     }
 
     &.active {
       background: ${({ $theme }) => sidebarTheme[$theme].active};
       color: ${({ $theme }) => sidebarTheme[$theme].activeText};
+      font-weight: ${typography.fontWeight.medium};
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
     }
   }
 `;
@@ -121,6 +130,33 @@ export default function SidebarVariant(props) {
     variant,
     theme = "dark",
   } = props;
+
+  const getItemValue = (item) => {
+    if (typeof item === "string") return item;
+    return item.value || item.id || item.label;
+  };
+
+  const getItemLabel = (item) => {
+    if (typeof item === "string") return item;
+    return item.label || item.value || item.id;
+  };
+
+  const getItemIcon = (item) => {
+    if (typeof item === "string") return null;
+    return item.icon;
+  };
+
+  const isItemActive = (item) => {
+    const itemValue = getItemValue(item);
+    return activeItem === itemValue;
+  };
+
+  const handleItemClick = (item) => {
+    const itemValue = getItemValue(item);
+    if (onSelect) {
+      onSelect(itemValue);
+    }
+  };
 
   return (
     <SidebarContainer
@@ -139,18 +175,21 @@ export default function SidebarVariant(props) {
         </div>
       )}
 
-      {navItems.map((item) => {
-        const label = typeof item === "string" ? item : item.label;
-        const icon = typeof item === "string" ? null : item.icon;
+      {navItems.map((item, index) => {
+        const itemValue = getItemValue(item);
+        const itemLabel = getItemLabel(item);
+        const itemIcon = getItemIcon(item);
+        const isActive = isItemActive(item);
 
         return (
           <button
-            key={label}
-            className={`nav-item${activeItem === label ? " active" : ""}`}
-            onClick={() => onSelect(label)}
+            key={itemValue || index}
+            className={`nav-item${isActive ? " active" : ""}`}
+            onClick={() => handleItemClick(item)}
+            aria-current={isActive ? "page" : undefined}
           >
-            {icon}
-            {label.charAt(0).toUpperCase() + label.slice(1)}
+            {itemIcon}
+            {itemLabel.charAt(0).toUpperCase() + itemLabel.slice(1)}
           </button>
         );
       })}

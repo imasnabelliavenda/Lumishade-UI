@@ -57,8 +57,6 @@ export default function Header() {
         }
         code={`"use client";
 import { HeaderVariant } from "lumishade-ui";
-import { Home, User, Settings } from "lucide-react";
-import { useState } from "react";
 
 export default function Header() {
   const [active, setActive] = useState("dashboard");
@@ -104,7 +102,6 @@ export default function Header() {
         }
         code={`"use client";
 import { HeaderVariant } from "lumishade-ui";
-import { useState } from "react";
 
 export default function Header() {
   const [active, setActive] = useState("dashboard");

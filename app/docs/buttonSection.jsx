@@ -23,9 +23,9 @@ export default function Button() {
     return (
         <>
             <ButtonVariant
-            variant="default"
-            label="Submit"
-            onClick={() => alert("Data berhasil diirim!")}
+                variant="default"
+                label="Submit"
+                onClick={() => alert("Data berhasil diirim!")}
             />
         </>
     )
@@ -45,16 +45,15 @@ export default function Button() {
                 }
                 code={`"use client";
 import { ButtonVariant } from "lumishade-ui";
-import { Search } from "lucide-react";
 
 export default function Button() {
     return (
         <>
             <ButtonVariant 
-            variant="icon" 
-            theme="dark" 
-            label="Search" 
-            icon={<Search />} 
+                variant="icon" 
+                theme="dark" 
+                label="Search" 
+                icon={<Search />} 
             />
         </>
     )
@@ -74,16 +73,15 @@ export default function Button() {
                     }
                     code={`"use client";
 import { ButtonVariant } from "lumishade-ui";
-import { RefreshCcw } from "lucide-react";
 
 export default function Button() {
     return (
         <>
             <ButtonVariant 
-            variant="rotate" 
-            theme="light" 
-            label="Refresh" 
-            icon={<RefreshCcw />} 
+                variant="rotate" 
+                theme="light" 
+                label="Refresh" 
+                icon={<RefreshCcw />} 
             />
         </>
     )

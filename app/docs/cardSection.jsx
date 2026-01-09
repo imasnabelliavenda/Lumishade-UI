@@ -85,15 +85,15 @@ import { CardVariant } from "lumishade-ui";
 
 export default function Card() {
     return (
-    <>
-        <CardVariant
-            variant="float"
-            theme="dark"
-            title="Premium Card"
-            desc="Special card with floating animation"
-            image="https://i.pinimg.com/736x/ab/13/75/ab137557771bca5a60d8fcb2b44c47a0.jpg"
-        />
-    </>
+        <>
+            <CardVariant
+                variant="float"
+                theme="dark"
+                title="Premium Card"
+                desc="Special card with floating animation"
+                image="https://i.pinimg.com/736x/ab/13/75/ab137557771bca5a60d8fcb2b44c47a0.jpg"
+            />
+        </>
     )
 }
 `}

@@ -33,7 +33,6 @@ export default function SidebarSection () {
                 }
                 code={`"use client";
 import { SidebarVariant } from "lumishade-ui";
-import { User, Settings, LogOut } from "lucide-react";
 
 export default function Sidebar() {
   const [active, setActive] = useState("dashboard");
@@ -82,7 +81,6 @@ export default function Sidebar() {
                 }
                 code={`"use client";
 import { SidebarVariant } from "lumishade-ui";
-import { Home, Settings, User } from "lucide-react";
 
 export default function Sidebar() {
   return (
@@ -127,7 +125,6 @@ export default function Sidebar() {
                 }
                 code={`"use client";
 import { SidebarVariant } from "lumishade-ui";
-import { Home, Settings, User } from "lucide-react";
 
 export default function Sidebar() {
   return (

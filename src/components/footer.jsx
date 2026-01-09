@@ -1,8 +1,8 @@
 "use client";
 
 import styled, { css, keyframes } from "styled-components";
-import ButtonVariant from "./button";
-import { colors, textColors, borderRadius, typography, spacing } from "../tokens/themes";
+import ButtonVariant from "./button.jsx";
+import { colors, textColors, borderRadius, typography, spacing } from "../tokens/themes.js";
 
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(10px); }

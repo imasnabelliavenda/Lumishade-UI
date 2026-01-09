@@ -60,7 +60,6 @@ export default function Footer() {
                 }
                 code={`"use client";
 import { FooterVariant } from "lumishade-ui";
-import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -104,7 +103,6 @@ export default function Footer() {
                 }
                 code={`"use client";
 import { FooterVariant } from "lumishade-ui";
-import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
