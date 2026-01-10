@@ -100,7 +100,7 @@ const StyledCard = styled.div`
 `;
 
 export default function CardVariant(props) {
-  const { variant, theme, title, desc, buttonLabel, image, extra } = props || {};
+  const { variant, theme = "dark", title, desc, buttonLabel, image, extra } = props || {};
 
   return (
     <StyledCard $variant={variant} $theme={theme} className={`card${variant ? ` card--${variant}` : ""}`}>

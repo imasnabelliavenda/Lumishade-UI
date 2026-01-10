@@ -2,8 +2,63 @@
 
 import ComponentSection from "./componentSection";
 import CardVariant from "../components/card";
+import { useTheme } from "../context/themeContext";
+import { gradients } from "../tokens/themes";
+import PropsTable from "./propsTable";
 
 export default function CardSection () {
+    const { theme } = useTheme();
+
+    const cardProps = [
+        {
+            name: "variant",
+            meta: "(Required)",
+            description:
+            "Menentukan jenis card yang digunakan. Tersedia: default, interactive, dan float.",
+        },
+        {
+            name: "theme",
+            meta: "(Required)",
+            description:
+            "Menentukan tema warna card, bisa light atau dark.",
+            colors: [
+            { name: "light", value: gradients.light },
+            { name: "dark", value: gradients.dark },
+            ],
+        },
+        {
+            name: "title",
+            meta: "(Optional)",
+            description:
+            "Judul utama yang ditampilkan pada card.",
+        },
+        {
+            name: "desc",
+            meta: "(Optional)",
+            description:
+            "Deskripsi singkat untuk menjelaskan isi card.",
+        },
+        {
+            name: "image",
+            meta: "(Optional)",
+            description:
+            "Gambar yang ditampilkan pada card sebagai pendukung visual.",
+        },
+        {
+            name: "buttonLabel",
+            meta: "(Optional)",
+            description:
+            "Teks tombol yang muncul di dalam card.",
+        },
+        {
+            name: "extra",
+            meta: "(Optional)",
+            description:
+            "Konten tambahan untuk variant interactive.",
+        },
+    ];
+
+
     return (
         <>
             <ComponentSection
@@ -97,6 +152,11 @@ export default function Card() {
     )
 }
 `}
+            />
+            <PropsTable 
+                title="Card Props" 
+                data={cardProps} 
+                theme={theme}
             />
         </>
     )

@@ -1,8 +1,8 @@
 "use client";
 
 import styled, { css, keyframes } from "styled-components";
-import ButtonVariant from "./button.jsx";
-import { textColors, borderRadius, typography, effects, gradients } from "../tokens/themes.js";
+import ButtonVariant from "./button";
+import { textColors, borderRadius, typography, effects, gradients } from "../tokens/themes";
 
 const floatingCard = keyframes`
   0% { transform: translateY(0px); }
@@ -100,7 +100,7 @@ const StyledCard = styled.div`
 `;
 
 export default function CardVariant(props) {
-  const { variant, theme, title, desc, buttonLabel, image, extra } = props || {};
+  const { variant, theme = "dark", title, desc, buttonLabel, image, extra } = props || {};
 
   return (
     <StyledCard $variant={variant} $theme={theme} className={`card${variant ? ` card--${variant}` : ""}`}>

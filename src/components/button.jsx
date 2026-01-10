@@ -1,7 +1,7 @@
 "use client";
 
 import styled, { css, keyframes } from "styled-components";
-import { borderRadius, typography, buttons, effects, iconSize } from "../tokens/themes.js";
+import { borderRadius, typography, buttons, effects, iconSize } from "../tokens/themes";
 
 const pressDown = keyframes`
   0% { transform: scale(1); }
@@ -82,7 +82,7 @@ const StyledButton = styled.button`
   }}
 `;
 
-export default function ButtonVariant({ theme, variant, label, icon, onClick, ...props }) {
+export default function ButtonVariant({ theme="dark", variant, label, icon, onClick, ...props }) {
 
   const handleClick = (e) => {
     if (onClick) onClick(e); 

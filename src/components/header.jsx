@@ -141,7 +141,7 @@ function useIsMobile(breakpoint = 768) {
 }
 
 export default function HeaderVariant({
-  variant = "default",
+  variant,
   theme = "dark",
   logo,
   navItems = [],

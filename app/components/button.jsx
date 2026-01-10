@@ -82,7 +82,7 @@ const StyledButton = styled.button`
   }}
 `;
 
-export default function ButtonVariant({ theme, variant, label, icon, onClick, ...props }) {
+export default function ButtonVariant({ theme="dark", variant, label, icon, onClick, ...props }) {
 
   const handleClick = (e) => {
     if (onClick) onClick(e); 
