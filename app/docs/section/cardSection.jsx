@@ -1,10 +1,10 @@
 "use client"
 
-import ComponentSection from "./componentSection";
-import CardVariant from "../components/card";
-import { useTheme } from "../context/themeContext";
-import { gradients } from "../tokens/themes";
-import PropsTable from "./propsTable";
+import ComponentSection from "../componentSection";
+import CardVariant from "../../components/card";
+import { useTheme } from "../../context/themeContext";
+import { gradients, red } from "../../tokens/themes";
+import PropsTable from "../propsTable";
 
 export default function CardSection () {
     const { theme } = useTheme();
@@ -24,6 +24,7 @@ export default function CardSection () {
             colors: [
             { name: "light", value: gradients.light },
             { name: "dark", value: gradients.dark },
+            { name: "red", value: red.soft },
             ],
         },
         {

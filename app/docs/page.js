@@ -5,12 +5,12 @@ import { useState, useEffect, useRef } from "react";
 import HeaderVariant from "../components/header";
 import FooterVariant from "../components/footer";
 import SidebarVariant from "../components/sidebar";
-import ButtonSection from "./buttonSection";
-import CardSection from "./cardSection";
-import HeaderSection from "./headerSection";
-import FooterSection from "./footerSection";
-import SidebarSection from "./sidebarSection";
-import ThemeToggle from "../components/themeToggle";
+import ButtonSection from "./section/buttonSection";
+import CardSection from "./section/cardSection";
+import HeaderSection from "./section/headerSection";
+import FooterSection from "./section/footerSection";
+import SidebarSection from "./section/sidebarSection";
+import ThemeToggle from "./themeToggle";
 import { useTheme } from "../context/themeContext";
 import {
   Home,

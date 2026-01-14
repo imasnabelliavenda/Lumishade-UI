@@ -2,13 +2,28 @@
 
 import { useState, useEffect } from "react";
 import styled, { keyframes, css } from "styled-components";
-import { colors, textColors, borderRadius, typography } from "../tokens/themes.js";
+import { colors, textColors, borderRadius, typography, red } from "../tokens/themes.js";
 import SidebarVariant from "./sidebar.jsx";
 
 const slideDown = keyframes`
   0% { transform: translateY(-25px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
 `;
+
+const headerTheme = {
+  dark: {
+    background: colors.darkBg1,
+    color: textColors.light,
+  },
+  light: {
+    background: colors.lightBg2,
+    color: textColors.dark,
+  },
+  red: {
+    background: red.primary,
+    color: textColors.light,
+  },
+};
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -24,10 +39,10 @@ const StyledHeader = styled.header`
   transition: background 0.25s ease, color 0.25s ease;
 
   background: ${({ $theme }) =>
-    $theme === "dark" ? colors.darkBg1 : colors.lightBg2};
+    headerTheme[$theme]?.background || headerTheme.light.background};
 
   color: ${({ $theme }) =>
-    $theme === "dark" ? textColors.light : textColors.dark};
+    headerTheme[$theme]?.color || headerTheme.light.color};
 
   ${({ variant }) =>
     variant === "slide" &&
@@ -123,7 +138,18 @@ const SidebarContainer = styled.div`
   transform: translateX(${({ $open }) => ($open ? "0" : "100%")});
   transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.2, 1);
   z-index: 995;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+  background: ${({ $theme }) => {
+    switch ($theme) {
+      case "dark":
+        return `linear-gradient(135deg, ${colors.darkBg1}, ${colors.darkBg2})`;
+      case "light":
+        return `linear-gradient(135deg, ${colors.lightBg1}, ${colors.lightBg2})`;
+      case "red":
+        return `linear-gradient(135deg, ${red.primary}, ${red.darkBgSoft})`;
+      default:
+        return `linear-gradient(135deg, ${colors.darkBg1}, ${colors.darkBg2})`;
+    }
+  }};
   box-shadow: -6px 0 30px rgba(0, 0, 0, 0.5);
 `;
 
@@ -197,6 +223,7 @@ export default function HeaderVariant({
             <SidebarVariant
               open={open}
               onClose={toggleMenu}
+              theme={theme}
               {...sidebarProps}
             />
           </SidebarContainer>

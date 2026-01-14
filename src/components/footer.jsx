@@ -2,7 +2,7 @@
 
 import styled, { css, keyframes } from "styled-components";
 import ButtonVariant from "./button.jsx";
-import { colors, textColors, borderRadius, typography, spacing } from "../tokens/themes.js";
+import { colors, textColors, borderRadius, typography, spacing, red } from "../tokens/themes.js";
 
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(10px); }
@@ -15,7 +15,9 @@ const wave = keyframes`
 `;
 
 const StyledFooter = styled.footer`
-   padding: 14px 28px;
+  position: relative;
+  overflow: hidden;
+  padding: 14px 28px;
   box-sizing: border-box;
   font-family: ${typography.fontFamily};
   transition: background 0.3s ease, color 0.3s ease;
@@ -25,11 +27,18 @@ const StyledFooter = styled.footer`
   justify-content: ${({ $activeCount }) =>
   $activeCount <= 1 ? "center" : "space-between"};
   gap: ${({ $activeCount }) => ($activeCount > 1 ? spacing.md : 0)};
+ 
+  background: ${({ $theme }) => ({
+    dark: colors.darkBg1,
+    light: colors.lightBg2,
+    red: red.primary,
+  })[$theme]};
 
-  background: ${({ $theme }) =>
-    $theme === "dark" ? colors.darkBg1 : colors.lightBg2};
-  color: ${({ $theme }) =>
-    $theme === "dark" ? textColors.light : textColors.dark};
+  color: ${({ $theme }) => ({
+    dark: textColors.light,
+    light: textColors.dark,
+    red: textColors.light,
+  })[$theme]};
 
   width: 100%;
   overflow-x: hidden;
@@ -64,7 +73,10 @@ const StyledFooter = styled.footer`
     svg {
       width: 28px;
       height: 28px;
-      color: ${({ $theme }) => $theme === "dark" ? textColors.light : textColors.dark};
+      color: ${({ $theme }) =>
+      $theme === "dark" || $theme === "red"
+        ? textColors.light
+        : textColors.dark};
       opacity: 0.85;
       transition: 0.3s ease;
 
@@ -127,31 +139,52 @@ const StyledFooter = styled.footer`
         `;
       case "wave":
         return css`
-          background: ${({ $theme }) =>
-            $theme === "dark"
-              ? `
-            linear-gradient(
-              90deg,
-              ${colors.darkBg1},
-              ${colors.darkBg2},
-              ${colors.mutedDark},
-              ${colors.darkBg2},
-              ${colors.darkBg1}
-            )
-          `
-              : `
-            linear-gradient(
-              90deg,
-              ${colors.lightBg1},
-              ${colors.lightBg2},
-              ${colors.mutedLight},
-              ${colors.lightBg2},
-              ${colors.lightBg1}
-            )
-          `};
+          &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            opacity: ${({ $variant }) => ($variant === "wave" ? 1 : 0)};
+            transition: opacity 0.3s ease;
 
-          background-size: 400% 400%;
-          animation: ${wave} 13s linear infinite;
+            background: ${({ $theme }) => ({
+              dark: `
+                linear-gradient(
+                  90deg,
+                  ${colors.darkBg1},
+                  ${colors.darkBg2},
+                  ${colors.mutedDark},
+                  ${colors.darkBg2},
+                  ${colors.darkBg1}
+                )
+              `,
+              light: `
+                linear-gradient(
+                  90deg,
+                  ${colors.lightBg1},
+                  ${colors.lightBg2},
+                  ${colors.mutedLight},
+                  ${colors.lightBg2},
+                  ${colors.lightBg1}
+                )
+              `,
+              red: `
+                linear-gradient(
+                  90deg,
+                 #a94747,
+                 #a94747,
+                  ${red.primary},
+                  ${red.primary},
+                 #a94747,
+                 #a94747
+                )
+              `,
+            })[$theme]};
+
+            background-size: 400% 400%;
+            animation: ${wave} 13s linear infinite;
+            transition: opacity 0.3s ease;
+          }
 
           .footer__logo,
           .footer__copy,

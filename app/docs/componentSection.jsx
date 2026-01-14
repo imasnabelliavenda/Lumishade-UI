@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import CodeBlock from "../components/code-block";
+import CodeBlock from "./code-block";
 import { typography } from "../tokens/themes";
 
 const Section = styled.section`

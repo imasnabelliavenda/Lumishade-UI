@@ -1,7 +1,7 @@
 "use client";
 
 import styled, { css, keyframes } from "styled-components";
-import { borderRadius, typography, buttons, effects, iconSize } from "../tokens/themes";
+import { borderRadius, typography, buttons, effects, iconSize } from "../tokens/themes.js";
 
 const pressDown = keyframes`
   0% { transform: scale(1); }
@@ -18,6 +18,12 @@ const rotateFull = keyframes`
   100% { transform: rotate(360deg); }
 `;
 
+const buttonTheme = {
+  dark: buttons.dark,
+  light: buttons.light,
+  red: buttons.redPrimary,
+};
+
 const StyledButton = styled.button`
   font-family: ${typography.fontFamily};
   font-size: ${typography.fontSize.md};
@@ -31,15 +37,20 @@ const StyledButton = styled.button`
   justify-content: center;
   gap: 8px;
 
-  background: ${({ $theme }) => $theme === "dark" ? buttons.dark.background : buttons.light.background};
-  color: ${({ $theme }) => $theme === "dark" ? buttons.dark.color : buttons.light.color};
+  background: ${({ $theme }) =>
+  buttonTheme[$theme]?.background || buttonTheme.dark.background};
+
+  color: ${({ $theme }) =>
+    buttonTheme[$theme]?.color || buttonTheme.dark.color};
 
   &:hover {
-    background: ${({ $theme }) => $theme === "dark" ? buttons.dark.hover : buttons.light.hover};
+    background: ${({ $theme }) =>
+      buttonTheme[$theme]?.hover || buttonTheme.dark.hover};
   }
 
   &:active {
-    background: ${({ $theme }) => $theme === "dark" ? buttons.dark.active : buttons.light.active};
+    background: ${({ $theme }) =>
+      buttonTheme[$theme]?.active || buttonTheme.dark.active};
   }
 
   ${({ $variant }) => {

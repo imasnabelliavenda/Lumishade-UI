@@ -1,11 +1,11 @@
 "use client"
 
-import ComponentSection from "./componentSection";
-import FooterVariant from "../components/footer";
+import ComponentSection from "../componentSection";
+import FooterVariant from "../../components/footer";
 import { Facebook, Instagram, Twitter } from "lucide-react";
-import { useTheme } from "../context/themeContext";
-import { colors } from "../tokens/themes";
-import PropsTable from "./propsTable";
+import { useTheme } from "../../context/themeContext";
+import { colors, red } from "../../tokens/themes";
+import PropsTable from "../propsTable";
 
 export default function FooterSection () {
   const { theme } = useTheme();
@@ -25,6 +25,7 @@ export default function FooterSection () {
       colors: [
         { name: "light", value: colors.lightBg2 },
         { name: "dark", value: colors.darkBg1 },
+        { name: "red", value:  red.primary, },
       ],
     },
     {

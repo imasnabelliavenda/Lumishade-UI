@@ -4,12 +4,21 @@ export const colors = {
   darkBg2: "#241f3f",
   lightBg1: "#f3f7fc",
   lightBg2: "#e8f0fb",
+  
   primary: "#6f58e2",
   secondary: "#a48bff",
   accent: "#7c6be6",
   mutedDark: "#5c5774",
   mutedLight: "#c9c6dd",
 };
+
+export const red = {
+  primary: "#8B1E1E",
+  hover: "#A83232",
+  soft: "#FAFAFA",
+  textDark: "#822727",
+};
+
 
 // text colors
 export const textColors = {
@@ -82,7 +91,6 @@ export const iconSize = {
   lg: "24px",
 };
 
-
 // buttons
 export const buttons = {
   primary: {
@@ -98,8 +106,8 @@ export const buttons = {
     color: textColors.light,
   },
   light: {
-    background: "#d9e2f3",
-    hover: "#c7d5ed",
+    background: "#d5e1f7",
+    hover: "#cbd5e9",
     color: textColors.dark,
   },
   dark: {
@@ -115,30 +123,19 @@ export const buttons = {
     activeScale: 0.98,
     color: "#ffffff",
   },
-};
-
-// sidebar
-export const sidebarTheme = {
-  dark: {
-    background: colors.darkBg1,
-    text: textColors.light,
-    mutedText: textColors.mutedLight,
-    hover: colors.darkBg2,
-    active: colors.primary,
-    activeText: textColors.light,
-    border: colors.mutedDark,
+  redPrimary: {
+    background: red.primary,
+    hover: red.hover,
+    active: "#B74141",
+    color: "#FFFFFF",
   },
-  light: {
-    background: colors.lightBg2,
-    text: textColors.dark,
-    mutedText: textColors.mutedDark,
-    hover: colors.lightBg2,
-    active: colors.primary,
-    activeText: textColors.light,
-    border: colors.mutedLight,
+  redSoft: {
+    background: red.soft,
+    hover: "#FFEDE8",
+    color: red.primary,
   },
-};
 
+};
 
 export const darkTheme = {
   mode: "dark",

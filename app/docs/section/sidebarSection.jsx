@@ -1,12 +1,12 @@
 "use client"
 
-import ComponentSection from "./componentSection";
-import SidebarVariant from "../components/sidebar";
+import ComponentSection from "../componentSection";
+import SidebarVariant from "../../components/sidebar";
 import { Home, Settings, User, LogOut } from "lucide-react";
 import { useState } from "react";
-import { useTheme } from "../context/themeContext";
-import { colors } from "../tokens/themes";
-import PropsTable from "./propsTable";
+import { useTheme } from "../../context/themeContext";
+import { colors, red } from "../../tokens/themes";
+import PropsTable from "../propsTable";
 
 export default function SidebarSection () {
   const [active, setActive] = useState("dashboard");
@@ -27,6 +27,7 @@ export default function SidebarSection () {
       colors: [
         { name: "light", value: colors.lightBg2 },
         { name: "dark", value: colors.darkBg1 },
+        { name: "red", value: red.soft },
       ],
     },
     {

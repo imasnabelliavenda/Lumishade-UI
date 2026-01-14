@@ -15,7 +15,7 @@ import {
   Zap,
 } from "lucide-react";
 import styled from "styled-components";
-import ThemeToggle from "./components/themeToggle";
+import ThemeToggle from "./docs/themeToggle";
 import { 
   colors, 
   textColors, 

@@ -1,11 +1,11 @@
 "use client"
 
-import ComponentSection from "./componentSection";
-import ButtonVariant from "../components/button";
+import ComponentSection from "../componentSection";
+import ButtonVariant from "../../components/button";
 import { Search, RefreshCcw } from "lucide-react";
-import PropsTable from "./propsTable";
-import { useTheme } from "../context/themeContext";
-import { buttons } from "../tokens/themes";
+import PropsTable from "../propsTable";
+import { useTheme } from "../../context/themeContext";
+import { buttons } from "../../tokens/themes";
 
 export default function ButtonSection () {
     const { theme } = useTheme();
@@ -38,6 +38,7 @@ export default function ButtonSection () {
             colors: [
                 { name: "light", value: buttons.light.background },
                 { name: "dark", value: buttons.dark.background },
+                { name: "red", value: buttons.redPrimary.background, },
             ],
         },
     ];
@@ -52,6 +53,7 @@ export default function ButtonSection () {
                         variant="default"
                         label="Submit"
                         onClick={() => alert("Data berhasil dikirim!")}
+                        theme="dark"
                     />
                 }
                 code={`"use client";
@@ -64,6 +66,7 @@ export default function Button() {
                 variant="default"
                 label="Submit"
                 onClick={() => alert("Data berhasil diirim!")}
+                theme="dark"
             />
         </>
     )

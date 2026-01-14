@@ -1,8 +1,8 @@
 "use client";
 
 import styled, { css, keyframes } from "styled-components";
-import ButtonVariant from "./button";
-import { textColors, borderRadius, typography, effects, gradients } from "../tokens/themes";
+import ButtonVariant from "./button.jsx";
+import { textColors, borderRadius, typography, effects, gradients, red } from "../tokens/themes.js";
 
 const floatingCard = keyframes`
   0% { transform: translateY(0px); }
@@ -19,8 +19,23 @@ const StyledCard = styled.div`
   font-family: ${typography.fontFamily};
   transition: ${effects.transitionBase};
 
-  background: ${({ $theme }) => $theme === "dark" ? gradients.dark : gradients.light};
-  color: ${({ $theme }) => $theme === "dark" ? textColors.light : textColors.dark};
+  box-shadow:
+  0 1px 2px rgba(0, 0, 0, 0.06),
+  0 4px 12px rgba(0, 0, 0, 0.08);
+
+  background: ${({ $theme }) =>
+  $theme === "red"
+    ? red.soft
+    : $theme === "light"
+    ? gradients.light
+    : gradients.dark};
+
+  color: ${({ $theme }) =>
+    $theme === "red"
+      ? red.textDark
+      : $theme === "light"
+      ? textColors.dark
+      : textColors.light};
 
   .card__title {
     font-family: ${typography.fontLogo};

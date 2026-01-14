@@ -1,7 +1,7 @@
 "use client";
 
 import styled, { keyframes, css } from "styled-components";
-import { spacing, borderRadius, typography, sidebarTheme, effects } from "../tokens/themes.js";
+import { spacing, borderRadius, typography, effects, colors, textColors, red } from "../tokens/themes.js";
 
 const slideIn = keyframes`
   from { opacity: 0; transform: translateX(-25px); }
@@ -12,6 +12,37 @@ const innerSlide = keyframes`
   from { opacity: 0; transform: translateX(-12px); }
   to   { opacity: 1; transform: translateX(0); }
 `;
+
+const sidebarTheme = {
+  dark: {
+    background: colors.darkBg1,
+    text: textColors.light,
+    mutedText: textColors.mutedLight,
+    hover: colors.darkBg2,
+    active: colors.primary,
+    activeText: textColors.light,
+    border: colors.mutedDark,
+  },
+  light: {
+    background: colors.lightBg2,
+    text: textColors.dark,
+    mutedText: textColors.mutedDark,
+    hover: colors.lightBg2,
+    active: colors.primary,
+    activeText: textColors.light,
+    border: colors.mutedLight,
+  },
+  red: {
+    background: red.soft,       // soft merah untuk sidebar background
+    text: red.textDark,         // teks utama
+    mutedText: "#6E1A1A",       // teks muted / secondary
+    hover: "#B73B3B",           // hover sedikit lebih gelap
+    active: "#8B1E1E",          // active item lebih gelap
+    activeText: "#FFF5F5",      // teks item active putih agar kontras
+    border: "#CFA3A3",          // border profile / avatar
+  },
+};
+
 
 const SidebarContainer = styled.aside`
   background: ${({ $theme }) => sidebarTheme[$theme].background};
